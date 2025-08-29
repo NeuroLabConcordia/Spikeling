@@ -28,7 +28,7 @@ int   FastMode        = 0;    // default 0; if >0, the script is more optimised 
                               // around this would be to call them less frequently. This would give a little extra speed but eventually make the
                               // dials and photodiode feel "sluggish". The latter is currently not implemented
 int   AnalogInActive  = 1;    // default = 1, PORT 3 setting: Is Analog In port in use? Note that this shares the dial with the Syn2 (PORT 2) dial
-int   Syn1Mode        = 1;    // default 1
+int   Syn1Mode        = 0;    // default 1
                               // Syn1Mode = 0: Synapse 1 Port works like Synapse 2, to receive digital pulses as inputs
                               // Syn1Mode = 1: Synapse 1 Port acts as a Stimulus generator, with pulse frequency being controlled by Syn1Dial
                               // Syn1Mode = 2: Synapse 1 Port acts as a Stimulus generator, generating random Noise sequences (for reverse correlation)
