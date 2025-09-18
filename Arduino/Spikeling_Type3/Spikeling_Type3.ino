@@ -48,16 +48,16 @@ float timestep_ms     = 0.1;  // default 0.1. This is the "intended" refresh rat
                               // ...full script at this rate.  Instead, it will run at 333-900 Hz, depending on settings (see top)
 
 // set up Neuron behaviour array parameters
-int   nModes = 2; // set this to number of entries in each array. Entries 1 define Mode 1, etc..
+int   nModes = 3; // set this to number of entries in each array. Entries 1 define Mode 1, etc..
 
   // Izhikevich model parameters - for some pre-tested behaviours from the original paper, see bottom of the script
-float Array_a[]           =  { 0.02,  0.02, 0.02, 0.02, 0.02 }; // time scale of recovery variable u. Smaller a gives slower recovery
+float Array_a[]           =  { 0.02,  0.02, 0.70, 0.02, 0.02 }; // time scale of recovery variable u. Smaller a gives slower recovery
 float Array_b[]           =  { 0.20,  0.20, 0.25, 0.20, -0.1 }; // recovery variable associated with u. greater b couples it more strongly (basically sensitivity)
-int   Array_c[]           =  {  -65,   -50,  -55,  -55,  -55 }; // after spike reset value
-float Array_d[]           =  {  6.0,   2.0, 0.05,  4.0,  6.0 }; // after spike reset of recovery variable
+int   Array_c[]           =  {  -65,   -50,  -100,  -55,  -55 }; // after spike reset value
+float Array_d[]           =  {  6.0,   2.0, 10,  4.0,  6.0 }; // after spike reset of recovery variable
 
-float Array_PD_decay[]    =  { 0.0001,  0.0001, 0.00005,  0.001, 0.00005  }; // slow/fast adapting Photodiode - small numbers make diode slow to decay
-float Array_PD_recovery[] =  {   2,   2,   0.001,   0.01,   0.001  }; // slow/fast adapting Photodiode - small numbers make diode recover slowly
+float Array_PD_decay[]    =  { 0.0001,  0.0001, 0.5,  0.001, 0.00005  }; // slow/fast adapting Photodiode - small numbers make diode slow to decay
+float Array_PD_recovery[] =  {   2,   2,   0.0001,   0.01,   0.001  }; // slow/fast adapting Photodiode - small numbers make diode recover slowly
 int   Array_PD_polarity[] =  {       1,     -1,      -1,      1,       1  }; // 1 or -1, flips photodiode polarity, i.e. 1: ON cell, 2: OFF cell
 
 int   Array_DigiOutMode[] =  {Syn1Mode,Syn1Mode,Syn1Mode,Syn1Mode,Syn1Mode}; // PORT 1 setting. 0: Synapse 1 In, 1: Stimulus out, 2: 50 Hz binary noise out (for reverse correlation)
