@@ -51,8 +51,8 @@
   #define Syn1PotPin    -5  //              efficacy synapse 1
   #define Syn2PotPin    -6  //              efficacy synapse 2
   #define NoisePotPin   -7  //              scaling of Noise level
-  #define DigitalIn1Pin -8  //              Synapse 1 Input - expects 5V pulses
-  #define DigitalIn2Pin -9  //              Synapse 2 input - expects 5V pulses
+  #define DigitalIn1Pin -9  //              Synapse 1 Input - expects 5V pulses
+  #define DigitalIn2Pin -8  //              Synapse 2 input - expects 5V pulses
   #define AnalogInPin   -10 //              Analog in- takes 0-5V (positive only)
   #define DigitalOutPin -11 //              "Axon" - generates 5V pulses
   #define AnalogOutPin  -12 //              Analog out for full spike waveform
