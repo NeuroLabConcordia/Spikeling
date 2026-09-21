@@ -16,6 +16,7 @@
 
 int   nosound         = 0;    // 0 default, click on spike + digi out port active. 1 switches both off
 int   noled           = 0;    // 0 default, 1 switches the LED off
+int   PDActive        = 0;
 int   FastMode        = 0;    // default 0; if >0, the script is more optimised for speed by removing some of the serial outputs at the
                               // ... end of the script. This will systematically speed up the whole thing, but the system time will no longer be output as the 8th column
                               // ... meaning that the analysis scripts would need to be adjusted to reflect this (i.e. the array entry of the system time, default - column 8).
@@ -57,7 +58,7 @@ int   Array_c[]           =  {  -65}; // after spike reset value
 float Array_d[]           =  {  6.0}; // after spike reset of recovery variable
 
 float Array_PD_decay[]    =  { 1 }; // slow/fast adapting Photodiode - small numbers make diode slow to decay
-float Array_PD_recovery[] =  {   0 }; // slow/fast adapting Photodiode - small numbers make diode recover slowly
+float Array_PD_recovery[] =  {   1 }; // slow/fast adapting Photodiode - small numbers make diode recover slowly
 int   Array_PD_polarity[] =  {       1 }; // 1 or -1, flips photodiode polarity, i.e. 1: ON cell, 2: OFF cell
 
 int   Array_DigiOutMode[] =  {Syn1Mode,Syn1Mode,Syn1Mode,Syn1Mode,Syn1Mode}; // PORT 1 setting. 0: Synapse 1 In, 1: Stimulus out, 2: 50 Hz binary noise out (for reverse correlation)
@@ -187,6 +188,7 @@ void loop(void) {
   PDVal_Array[PD_integration_counter]=PDVal;
   PDVal_smoothed=(PDVal_Array[0]+PDVal_Array[1]+PDVal_Array[2]+PDVal_Array[3]+PDVal_Array[4]+PDVal_Array[5]+PDVal_Array[6]+PDVal_Array[7]+PDVal_Array[8]+PDVal_Array[9])/10; // dirty hack to smooth PD current - could be a lot more elegant
   I_PD = ((PDVal_smoothed) / PD_Scaling) * PD_gain; // input current
+  if (PDActive==0){I_PD=0;}
 
   if (PD_gain>PD_gain_min){
     PD_gain-=Array_PD_decay[NeuronBehaviour]*I_PD; // adapts proportional to I_PD
